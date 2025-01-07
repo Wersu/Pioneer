@@ -1,0 +1,155 @@
+body {
+    
+    color: #333333;
+    font-family: 'SourceSans3';
+    margin: 0;
+}
+
+header, main {
+    padding: 0 150px;
+}
+
+.header-info {
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.logo-link {
+    padding: 15px;
+    align-self: center;   
+}
+
+.contacts {
+    display:flex;
+    justify-content: end;
+    gap: 50px;
+}
+
+.questions-contact, .email, .consultiong-contact, .phone {
+    justify-self: right;
+    font-size: 20px;
+    margin: 0 0;
+}
+
+.email, .phone {
+    color: #607CE6;
+    font-size: 25px;
+    font-family: 'SourceSans3Bold'; 
+}
+
+.email {
+    text-decoration: underline;
+}
+
+.navigation {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+}
+
+.navigation-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.call{
+    display:flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+}
+
+.call-link{
+    font-size: 20px;
+    color: #607CE6;
+    text-decoration: none;
+}
+
+.nav-item {
+    text-decoration: none;
+    list-style: none;
+}
+
+.navigation-link {
+    display: block;
+    text-decoration: none;
+    color: #333333;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.current {
+    background-color: hsl(0, 0%, 20%, 0.3);
+    border-radius: 10%;
+}
+
+footer {
+    background-color: #333333;
+    color: white;
+    padding: 0 150px;
+ 
+}
+
+.info {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 0;
+}
+
+.links {
+    display: flex;
+    justify-content: end;
+}
+
+.links-list {
+    list-style: none;
+    margin: 0 30px;
+    
+}
+
+.list-item{
+    margin-bottom: 20px;
+
+}
+
+
+.footer-link {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.copyright {
+    justify-self: center;
+    padding-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@font-face {
+    font-family: 'SourceSans3';
+    src: url('fonts/SourceSans3-Regular.ttf') format('truetype'); 
+}
+@font-face {
+    font-family: 'SourceSans3Bold';
+    src: url('fonts/SourceSans3-SemiBold.ttf') format('truetype'); 
+}
