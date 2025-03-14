@@ -1,215 +1,214 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8">
+
+<head>
+    <meta charset="UTF-8">
     <title>Пионер</title>
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header>
-        <div class="header-info">
-            <a class="logo-link" href="#">
-                <img src="images/header_logo.svg" alt="logo" height="50">
-            </a>
-            <div class="contacts">
-                <div class="email-contact">
-                    <p class="questions-contact">По вопросам и предложениям</p>
-                    <p class="email">pionerrr@sila.ru</p>
-                </div>
-                <div class="phone-contact">
-                    <p class="consultiong-contact">Для консультаций</p>
-                    <p class="phone">+7 (495) 456-24-21</p>
-                </div>
-            </div>
-        </div>
-        <nav class="navigation">
-            <ul class="navigation-list">
-                <li class="nav-item">
-                    <a class="navigation-link" href="#">Главная</a>
-                </li>
-                <li class="nav-item">
-                    <a class="navigation-link" href="#">О предприятии</a>
-                </li>
-                <li class="nav-item">
-                    <a class="navigation-link" href="#">Новости</a>
-                </li>
-                <li class="nav-item">
-                    <a class="navigation-link" href="#">Продукция</a>
-                </li>
-                <li class="nav-item">
-                    <a class="navigation-link" href="#">Услуги</a>
-                </li>
-                <li class="nav-item">
-                    <a class="navigation-link" href="#">Поддержка</a>
-                </li>
-                <li class="nav-item">
-                    <a class="navigation-link" href="#">География поставок</a>
-                </li>
-                <li class="nav-item">
-                    <a class="navigation-link" href="#">Контакты</a>
-                </li>
-            </ul>
-            <div class="call">
-                <img src="images/phone_icon.svg" alt="call" height="20">
-                <a class="call-link" href="#">
-                    <p>ПЕРЕЗВОНИТЕ МНЕ</p>
-                </a>
-            </div>
-        </nav>  
-    </header>
-    <main>
-        <article>
-            <section class="intro main-section">
-                <div class="wrap-two-columns">
-                    <h2 class="intro-title">Российский завод силовых машин</h2>
-                    <p class="intro-label">научно-производственное предприятие, занимающееся разработкой и производством силовых машин.</p>
-                </div>
-                <img src="images/factory.png" alt="factory">
-            </section>
-            <section class="about main-section">
-                <h2 class="section-title">О предприятии</h2>
-                <div class="wrap-two-columns about-text">
-                    <div>
-                        <p>За 20 лет развития в структуре завода сформирован мощный производственный потенциал, 
-                            научно-технический центр, испытательная лаборатория, современная база, учебный центр и 
-                            широкая сеть региональных и международных представительств в Российской Федерации, 
-                            Республике Беларусь, Узбекистане и Казахстане.
-                        </p>
-                        <p>Ежегодно НПП «ПИОНЕР» реализует несколько проектов по модернизации серийных и разработке новых приборов,
-                            призванные в наибольшей степени удовлетворять возрастающие требования наших заказчиков.
-                        </p>
+    <script src="vendor/react.development.js"></script>
+    <script src="vendor/react-dom.development.js"></script>
+    <script src="vendor/babel.min.js"></script>
+    <script src="data.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App productImgs={productImgs} news={news} />);
+
+        function Header() {
+            return (
+                <header>
+                    <div className="header-info">
+                        <a className="logo-link" href="#">
+                            <img src="images/header_logo.svg" alt="logo" height="50" />
+                        </a>
+                        <div className="contacts">
+                            <div className="email-contact">
+                                <p className="questions-contact">По вопросам и предложениям</p>
+                                <p className="email">pionerrr@sila.ru</p>
+                            </div>
+                            <div className="phone-contact">
+                                <p className="consultiong-contact">Для консультаций</p>
+                                <p className="phone">+7 (495) 456-24-21</p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <p>В номенклатуре выпускаемой НПП «ПИОНЕР» продукции найдется все, что необходимо для успешного решения задачи 
-                            автоматизации технологических процессов на любом предприятии. Все средства измерения производства «ПИОНЕР» 
-                            внесены в Государственный реестр СИ и имеют необходимые разрешительные документы.
-                        </p>
+                    <Navigation />
+                </header>
+            );
+        }
+
+        function Navigation() {
+            return (
+                <nav className="navigation">
+                    <ul className="navigation-list">
+                        {["Главная", "О предприятии", "Новости", "Продукция", "Услуги", "Поддержка", "География поставок", "Контакты"].map(
+                            (item) => (
+                                <li className="nav-item" key={item}>
+                                    <a className="navigation-link" href="#">{item}</a>
+                                </li>
+                            )
+                        )}
+                    </ul>
+                    <div className="call">
+                        <img src="images/phone_icon.svg" alt="call" height="20" />
+                        <a className="call-link" href="#">
+                            <p>ПЕРЕЗВОНИТЕ МНЕ</p>
+                        </a>
                     </div>
+                </nav>
+            );
+        }
+
+        function ProductCard({ imgSrc, title }) {
+            return (
+                <li className="card">
+                    <img src={imgSrc} alt={title} width="250" />
+                    <h2 className="card-title">{title}</h2>
+                    <a className="details-link" href="#">Подробнее &gt;</a>
+                </li>
+            );
+        }
+
+        function Products({productImgs}) {
+            return (
+                <section className="products main-section">
+                    <h2 className="section-title">Продукция</h2>
+                    <ul className="cards-list">
+                        {productImgs.map((product) =>(
+                            <ProductCard 
+                                key={product.id} 
+                                imgSrc={product.url} 
+                                title={product.title} 
+                            />
+                        ))}
+                    </ul>
+                </section>
+            );
+        }
+
+        function NewsCard({imgSrc, title, date}) {
+            return (
+                <li className="card">
+                    <img src={imgSrc} alt={title} />
+                    <p className="card-title">{title}</p>
+                    <div className="wrap">
+                        <a className="details-link" href="#">Читать далее</a>
+                        <p className="data">{date}</p>
+                    </div>
+                </li>
+            );
+        }
+
+        function News({news}) {
+            return (
+                <section className="news main-section">
+                    <h2 className="section-title">Новости</h2>
+                    <ul className="cards-list">
+                        {news.map((item) =>
+                            <NewsCard 
+                                key={item.id} 
+                                imgSrc={item.url} 
+                                title={item.title} 
+                                date={item.date} 
+                            />
+                        )}
+                    </ul>
+                </section>
+            );
+        }
+
+        function Main({productImgs, news}) {
+            return (
+                <article>
+                    <section className="intro main-section">
+                        <div className="wrap-two-columns">
+                            <h2 className="intro-title">Российский завод силовых машин</h2>
+                            <p className="intro-label">научно-производственное предприятие, занимающееся разработкой и производством силовых машин.</p>
+                        </div>
+                        <img src="images/factory.png" alt="factory" />
+                    </section>
+                    <section className="about main-section">
+                        <h2 className="section-title">О предприятии</h2>
+                        <div className="wrap-two-columns about-text">
+                            <div>
+                                <p>За 20 лет развития в структуре завода сформирован мощный производственный потенциал,
+                                    научно-технический центр, испытательная лаборатория, современная база, учебный центр и
+                                    широкая сеть региональных и международных представительств в Российской Федерации,
+                                    Республике Беларусь, Узбекистане и Казахстане.
+                                </p>
+                                <p>Ежегодно НПП «ПИОНЕР» реализует несколько проектов по модернизации серийных и разработке новых приборов,
+                                    призванные в наибольшей степени удовлетворять возрастающие требования наших заказчиков.
+                                </p>
+                            </div>
+                            <div>
+                                <p>В номенклатуре выпускаемой НПП «ПИОНЕР» продукции найдется все, что необходимо для успешного решения задачи
+                                    автоматизации технологических процессов на любом предприятии. Все средства измерения производства «ПИОНЕР»
+                                    внесены в Государственный реестр СИ и имеют необходимые разрешительные документы.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="wrap-two-columns">
+                            <img src="images/man_working.jpg" alt="man_working" />
+                            <img src="images/car_factory.jpg" alt="car_factory" />
+                        </div>
+                    </section>
+                    <Products productImgs={productImgs} />
+                    <section className="map main-section">
+                        <h2 className="section-title">Представительства</h2>
+                        <img src="images/map.jpg" alt="map" />
+                    </section>
+                    <News news={news} />
+                </article>
+            );
+        }
+
+        function Footer() {
+            return (
+                <footer>
+                    <div className="info">
+                        <img src="images/footer_logo.svg" alt="logo" height="50" />
+                        <div className="links">
+                            <ul className="links-list">
+                                {["Главная", "О предприятии", "Новости", "Продукция", "Услуги"].map((item) => (
+                                    <li className="list-item" key={item}>
+                                        <a className="footer-link" href="#">{item}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                            <ul className="links-list">
+                                {["Поддержка", "География поставок", "Контакты"].map((item) => (
+                                    <li className="list-item" key={item}>
+                                        <a className="footer-link" href="#" >{item}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                            <ul className="links-list">
+                                {["Файлы", "Поддержка", "Политика конфеденциальности"].map((item) => (
+                                    <li className="list-item" key={item}>
+                                        <a className="footer-link" href="#" >{item}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="copyright">1994 — 2020 ООО «ПИОНЕР»</div>
+                </footer>
+            );
+        }
+
+        function App({productImgs=[], news=[]}) {
+            return (
+                <div>
+                    <Header />
+                    <Main productImgs={productImgs} news={news} />
+                    <Footer />
                 </div>
-                <div class="wrap-two-columns">
-                    <img src="images/man_working.jpg" alt="man_working">
-                    <img src="images/car_factory.jpg" alt="car_factory">
-                </div>
-            </section>
-            <section class="products main-section">
-                <h2 class="section-title">Продукция</h2>
-                <ul class="cards-list">
-                    <li class="card">
-                      <img src="images/level_indicator.png" alt="Сигнализатор уровня" width="250">
-                      <h2 class="card-title">Сигнализатор уровня</h2>
-                      <a class="details-link" href="#">Подробнее ></a>
-                    </li>
-                    <li class="card">
-                      <img src="images/title-aero.png" alt="Датчики давления" width="250">
-                      <h2 class="card-title">Датчики давления</h2>
-                      <a class="details-link" href="#">Подробнее ></a>
-                    </li>
-                    <li class="card">
-                      <img src="images/kamaz.png" alt="ПИД-регуляторы" width="250">
-                      <h2 class="card-title">ПИД-регуляторы</h2>
-                      <a class="details-link" href="#">Подробнее ></a>
-                    </li>
-                    <li class="card">
-                      <img src="images/turbo.png" alt="Калибратор давления" width="250">
-                      <h2 class="card-title">Калибратор давления</h2>
-                      <a class="details-link" href="#">Подробнее ></a>
-                    </li>
-                    <li class="card">
-                      <img src="images/main-slide-power.png" alt="Корректор расхода газа" width="250">
-                      <h2 class="card-title">Корректор расхода газа</h2>
-                      <a class="details-link" href="#">Подробнее ></a>
-                    </li>
-                    <li class="card">
-                      <img src="images/engine.png" alt="Манометры" width="250">
-                      <h2 class="card-title">Манометры</h2>
-                      <a class="details-link" href="#">Подробнее ></a>
-                    </li>
-                </ul>
-            </section>
-            <section class="map main-section">
-                <h2 class="section-title">Представительства</h2>
-                <img src="images/map.jpg" alt="map">
-            </section>
-            <section class="news main-section">
-                <h2 class="section-title">Новости</h2>
-                <ul class="cards-list">
-                    <li class="card">
-                        <img src="images/jonas-morgner.jpg" alt="НПП «ПИОНЕР» подтвердило свои компетенции в области консультирования и изготовления">
-                        <p class="card-title">НПП «ПИОНЕР» подтвердило свои компетенции в области консультирования и изготовления…</p>
-                        <div class="wrap">
-                            <a class="details-link" href="#">Читать далее</a>
-                            <p class="data">20.07.2020</p>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <img src="images/greg-rosenke.png" alt="Поздравляем коллектив регионального представительства «ПИОНЕР» с праздником!">
-                        <p class="card-title">Поздравляем коллектив регионального представительства «ПИОНЕР» с праздником!</p>
-                        <div class="wrap">
-                            <a class="details-link" href="#">Читать далее</a>
-                            <p class="data">18.07.2020</p>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <img src="images/rafael-juarez.png" alt="Перенос сроков проведения запланированных работ в 2020 году">
-                        <p class="card-title">Перенос сроков проведения запланированных работ в 2020 году</p>
-                        <div class="wrap">
-                            <a class="details-link" href="#">Читать далее</a>
-                            <p class="data">20.06.2020</p>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-        </article>
-    </main>
-    <footer>
-        <div class="info">
-            <img src="images/footer_logo.svg" alt="logo" height="50">
-            <div class="links">
-                <ul class="links-list">
-                    <li class="list-item">
-                        <a class="footer-link" href="#">Главная</a>
-                    </li>
-                    <li class="list-item">
-                        <a class="footer-link" href="#">О предприятии</a>
-                    </li>
-                    <li class="list-item">
-                        <a class="footer-link" href="#">Новости</a>
-                    </li>
-                    <li class="list-item">
-                        <a class="footer-link" href="#">Продукция</a>
-                    </li>
-                    <li class="list-item">
-                        <a class="footer-link" href="#">Услуги</a>
-                    </li>
-                </ul>
-                <ul class="links-list">
-                    <li class="list-item">
-                        <a class="footer-link" href="#">Поддержка</a>
-                    </li>
-                    <li class="list-item">
-                        <a class="footer-link" href="#">География поставок</a>
-                    </li>
-                    <li class="list-item">
-                        <a class="footer-link" href="#">Контакты</a>
-                    </li> 
-                
-                </ul>
-                <ul class="links-list">
-                    <li class="list-item">
-                        <a class="footer-link" href="#">Файлы</a>
-                    </li>
-                    <li class="list-item">
-                        <a class="footer-link" href="#">Поддержка</a>
-                    </li>
-                    <li class="list-item">
-                        <a class="footer-link" href="#">Политика конфеденциальности</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            1994 — 2020 ООО «ПИОНЕР»
-        </div>
-    </footer>
-  </body>
-</html>
+            );
+        }
+
+    </script>
+</body>
